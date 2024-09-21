@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const nocache = require('nocache');
+const { log } = require('console');
 const app = express();
 const port = 3000;
 
@@ -15,7 +16,10 @@ app.use((req, res, next) => {
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static('public'))
+
 // Configure session
+
 app.use(session({
     secret: 'secret-key', // Replace with a random secret key
     resave: false,
@@ -45,21 +49,28 @@ const validPassword = '123';
 app.get('/', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/home');
-    } else {
-        res.render('login', { title: 'Welcome to EJS with Express!', error: null });
+    }
+    if(req.session.invalid){
+        res.render('login', { error: 'Invalid username or password!' });
+    }
+    else{
+        res.render('login')
     }
 });
 
 // Login form submission
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
+    // console.log(req.body);
+    
 
     if (username === validUsername && password === validPassword) {
         // Set session variable
         req.session.loggedIn = true;  // Use `loggedIn`
         res.redirect('/home');
     } else {
-        res.render('login', { error: 'Invalid username or password!' });
+        req.session.invalid = true;
+        res.redirect('/');
     }
 });
 
