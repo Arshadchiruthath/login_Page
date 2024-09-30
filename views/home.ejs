@@ -9,10 +9,18 @@
 <body>
     <section class="bg">
     
-    <h1>Welcome to the Home!</h1>
-        <p>You are successfully logged in.</p>
-    <form action="/logout" >
         
+
+    <h1>Welcome to the Home!</h1>
+
+        
+        <p class="sub">You are successfully logged in.</p></div>
+        <p class="main">HAI <%= username %> ...</p>
+        <p class="main1">Your password is: <%= password %></p> 
+        </div>
+
+    <form action="/logout" >
+
         <button type="submit">logout</button>
     </form>
     </section>

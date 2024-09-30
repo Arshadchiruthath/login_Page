@@ -10,7 +10,7 @@ section{
     background-size: cover;
     display: grid;
     place-items: center;
-    grid-auto-rows: 30%;
+    
     
 }
 h1{
@@ -21,12 +21,12 @@ h1{
     position: relative;
     height: 10%;
 }
-p{
+p.sub{
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
     color: aliceblue;
     position: relative;
-    height: 5%;
+    bottom: 60px;
 }
 
 button{
@@ -38,6 +38,9 @@ button{
     border: 0;
     font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+
+    bottom: 70%;
     
 
 }
@@ -47,3 +50,17 @@ button:hover{
 
 
 
+p.main{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: aliceblue;
+    position: relative;
+    bottom: 90%;
+}
+p.main1{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(241, 35, 162);
+    position: relative;
+    bottom: 100%;
+}
